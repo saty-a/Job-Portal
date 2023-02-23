@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/feed_nav_graph"
+    app:startDestination="@id/jobsForYouFragment">
+
+    <fragment
+        android:id="@+id/jobsForYouFragment"
+        android:name="com.example.jobportal.ui.feed.JobsForYouFragment"
+        android:label="JobsForYouFragment" >
+        <action
+            android:id="@+id/action_jobsForYouFragment_to_jobsAppliedByYouFragment"
+            app:destination="@id/jobsAppliedByYouFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobsAppliedByYouFragment"
+        android:name="com.example.jobportal.ui.feed.JobsAppliedByYouFragment"
+        android:label="fragment_jobs_applied_by_you"
+        tools:layout="@layout/fragment_jobs_applied_by_you" />
+</navigation>

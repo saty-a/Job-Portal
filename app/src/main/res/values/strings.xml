@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Job Portal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="myjobs">My<font color="#43AFFF">Jobs</font></string>
+    <string name="apply">Apply</string>
+    <string name="ui_ux_designer">UI UX Designer</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt…</string>
+    <string name="gurgaon">Gurgaon</string>
+    <string name="login_signup">Login/SignUp</string>
+    <string name="back">Back</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="enter_the_email_associated_with_your_account_and_we_ll_send_you_instructions_to_reset_your_password">Enter the email associated with your account and we’ll send you instructions to reset your password.</string>
+    <string name="email_address">Email address*</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="submit">Submit</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="cover_image">Cover Image</string>
+    <string name="why_us">Why Us</string>
+    <string name="get_more_nvisibility">Get More\nVisibility</string>
+    <string name="verify_the_nabilities">Verify The\nAbilities</string>
+    <string name="organise_your_ncandidates">Organise Your\nCandidates</string>
+    <string name="companies_who_trust_us">Companies Who Trust Us</string>
+    <string name="get_started">Get Started</string>
+    <string name="add_jobs">Add Jobs</string>
+    <string name="jobs_applied_by_you">Jobs applied by you</string>
+    <string name="your_applied_jobs_will_show_here">Your applied jobs will show here!</string>
+    <string name="see_all_jobs">See all jobs</string>
+    <string name="jobs_for_you">Jobs for you</string>
+    <string name="login">Login</string>
+    <string name="enter_your_email_address">Enter your email address</string>
+    <string name="password">Password</string>
+    <string name="enter_your_passwords">Enter your passwords</string>
+    <string name="new_to_myjobs">New to MyJobs?</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="reset_your_password">Reset Your Password</string>
+    <string name="enter_your_new_password_below">Enter your new password below.</string>
+    <string name="new_password">New password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="new_confirm_new_password">New Confirm new password</string>
+    <string name="reset">Reset</string>
+    <string name="recruiter">Recruiter</string>
+    <string name="candidate">Candidate</string>
+    <string name="signup">Signup</string>
+    <string name="i_m_a">I\'m a*</string>
+    <string name="full_name">Full Name*</string>
+    <string name="enter_your_full_name">Enter your full name</string>
+    <string name="create_password">Create password*</string>
+    <string name="confirm_password">Confirm password*</string>
+    <string name="skills">Skills</string>
+    <string name="enter_comma_separated_skills">Enter comma separated skills</string>
+    <string name="have_an_account">Have an account?</string>
+</resources>
