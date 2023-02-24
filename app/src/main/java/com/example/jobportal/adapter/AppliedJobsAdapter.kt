@@ -30,8 +30,6 @@ class AppliedJobsAdapter(private val mlist:List<jobs>):RecyclerView.Adapter<Appl
         return mlist.size
     }
 
-
-
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val location: TextView = itemView.findViewById(R.id.cityTv)
         val designation: TextView = itemView.findViewById(R.id.designationTv)

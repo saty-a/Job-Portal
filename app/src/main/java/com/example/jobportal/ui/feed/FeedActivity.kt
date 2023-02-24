@@ -3,23 +3,31 @@ package com.example.jobportal.ui.feed
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.jobportal.MainActivity
 import com.example.jobportal.R
+import com.example.jobportal.api.JobsAPI
 import com.example.jobportal.databinding.ActivityFeedBinding
+import com.example.jobportal.utils.Constants.TAG
+import com.example.jobportal.utils.SessionManager
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class FeedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFeedBinding
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    //    replaceFragment(JobsForYouFragment())
 
                 binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
@@ -39,8 +47,8 @@ class FeedActivity : AppCompatActivity() {
                     builder.setMessage("Are you sure you want to Logout?")
                     builder.setIcon(android.R.drawable.ic_dialog_alert)
                     builder.setPositiveButton("Yes"){dialogInterface, which ->
-                        Toast.makeText(applicationContext,"You have successfully logged out!",Toast.LENGTH_LONG).show()
                         logout()
+                        Toast.makeText(applicationContext,"You have successfully logged out!",Toast.LENGTH_LONG).show()
                     }
                     builder.setNegativeButton("No"){dialogInterface, which ->
                     }
@@ -63,6 +71,8 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun logout(){
+
+        sessionManager.clearloginPrefs()
         startActivity(Intent(this,MainActivity::class.java))
     }
 

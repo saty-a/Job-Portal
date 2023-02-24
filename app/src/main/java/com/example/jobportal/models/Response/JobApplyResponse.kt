@@ -1,8 +1,8 @@
 package com.example.jobportal.models.Response
 
-data class NetworkResponse(
+data class JobApplyResponse(
     val code: Int,
-    val `data`: List<ResponseItem>,
-    val metadata: Metadata,
+    val `data`: List<JobApply>,
+    val metadata: MetadataX,
     val success: Boolean
 )

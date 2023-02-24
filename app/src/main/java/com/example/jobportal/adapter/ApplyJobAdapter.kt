@@ -1,14 +1,16 @@
 package com.example.jobportal.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jobportal.R
-import com.example.jobportal.models.jobs
+import com.example.jobportal.models.Response.JobApply
+import com.example.jobportal.utils.Constants.TAG
 
-    class ApplyJobAdapter(private val mList: List<jobs>) : RecyclerView.Adapter<ApplyJobAdapter.ViewHolder>() {
+class ApplyJobAdapter(private val mList: List<JobApply>) : RecyclerView.Adapter<ApplyJobAdapter.ViewHolder>() {
 
         // create new views
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -23,13 +25,12 @@ import com.example.jobportal.models.jobs
         // binds the list items to a view
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-            val jobModel = mList[position]
+            val job = mList[position]
 
-            // sets the image to the imageview from our itemHolder class
-            // sets the text to the textview from our itemHolder class
-            holder.designation.text = jobModel.designation
-            holder.description.text = jobModel.description
-            holder.location.text = jobModel.location
+            Log.d(TAG,"List starts $position :"+mList[position])
+            holder.designation.text = job.title
+            holder.description.text = job.description
+            holder.location.text = job.location
 
         }
 

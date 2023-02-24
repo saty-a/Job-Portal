@@ -19,12 +19,14 @@ import com.example.jobportal.models.Request.LoginRequest
 import com.example.jobportal.models.Response.LoginResponse
 import com.example.jobportal.ui.feed.FeedActivity
 import com.example.jobportal.utils.NetworkResult
+import com.example.jobportal.utils.SessionManager
 import com.google.gson.JsonObject
 import com.wajahatkarim3.easyvalidation.core.view_ktx.contains
 import com.wajahatkarim3.easyvalidation.core.view_ktx.validator
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import retrofit2.Response
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
@@ -36,6 +38,9 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val authViewModel by viewModels<AuthViewModel>()
+
+    @Inject
+    lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,6 +101,8 @@ class LoginFragment : Fragment() {
             when (it) {
                 is NetworkResult.Success -> {
                     Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
+                    sessionManager.saveAuthToken(it.data!!.data.token)
+                    Toast.makeText(context,sessionManager.getToken().toString(),Toast.LENGTH_SHORT).show()
                         startActivity(Intent(activity, FeedActivity::class.java))
                         activity?.finish()
                 }

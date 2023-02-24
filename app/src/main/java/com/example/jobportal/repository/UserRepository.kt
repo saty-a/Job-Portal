@@ -1,7 +1,5 @@
 package com.example.jobportal.repository
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,6 +10,7 @@ import com.example.jobportal.models.Response.LoginResponse
 import com.example.jobportal.models.Response.SignUpResponse
 import com.example.jobportal.utils.Constants.TAG
 import com.example.jobportal.utils.NetworkResult
+import com.example.jobportal.utils.SessionManager
 import org.json.JSONObject
 import retrofit2.Response
 import javax.inject.Inject
@@ -45,6 +44,7 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
         }
 
     private fun handleResponseLogin(response: Response<LoginResponse>) {
+
         if (response.isSuccessful && response.body() != null) {
             _userResponseLiveData.postValue(NetworkResult.Success(response.body()!!))
         } else if (response.errorBody() != null) {
@@ -52,7 +52,6 @@ class UserRepository @Inject constructor(private val userAPI: UserAPI) {
             _userResponseLiveData.postValue(NetworkResult.Error(errorObj.getString("message")))
         } else {
             _userResponseLiveData.postValue(NetworkResult.Error("Something went Wrong"))
-
         }
     }
 
