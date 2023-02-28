@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import com.example.jobportal.databinding.FragmentLoginBinding
 import com.example.jobportal.models.Request.LoginRequest
 import com.example.jobportal.models.Response.LoginResponse
 import com.example.jobportal.ui.feed.FeedActivity
+import com.example.jobportal.utils.Constants.TAG
 import com.example.jobportal.utils.NetworkResult
 import com.example.jobportal.utils.SessionManager
 import com.google.gson.JsonObject
@@ -61,9 +63,6 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.loginBtn.visibility = View.VISIBLE
-//        binding.progressBar.visibility = View.GONE
-
 
         binding.loginBtn.setOnClickListener {
             if (binding.emailEt.validator().nonEmpty()
@@ -102,8 +101,15 @@ class LoginFragment : Fragment() {
                 is NetworkResult.Success -> {
                     Toast.makeText(context, "Login Successful!", Toast.LENGTH_SHORT).show()
                     sessionManager.saveAuthToken(it.data!!.data.token)
+
                     Toast.makeText(context,sessionManager.getToken().toString(),Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(activity, FeedActivity::class.java))
+                    val intent = Intent(activity, FeedActivity::class.java)
+
+                    sessionManager.saveUserId(it.data.data.userRole.toInt())
+                //    sessionManager.editor.putString("id",it.data!!.data.userRole.toString())
+                //    intent.putExtra("id", it.data!!.data.userRole)
+                    Log.d(TAG,it.data.data.userRole.toString())
+                    startActivity(intent)
                         activity?.finish()
                 }
                 is NetworkResult.Error -> {

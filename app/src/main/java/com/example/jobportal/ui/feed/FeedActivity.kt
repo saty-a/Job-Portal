@@ -20,6 +20,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FeedActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFeedBinding
+    private var userId=1
 
     @Inject
     lateinit var sessionManager: SessionManager
@@ -29,36 +30,67 @@ class FeedActivity : AppCompatActivity() {
         binding = ActivityFeedBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-                binding.bottomNavigation.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.home->{
-                    Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show()
-                    replaceFragment(JobsForYouFragment())
-                }
+      //  val response=JobsAPI.getAvailableJobs()
 
-                R.id.appliedJob -> {
-                    Toast.makeText(this,"Applied",Toast.LENGTH_SHORT).show()
-                    replaceFragment(JobsAppliedByYouFragment())
-                }
+        if (userId==1){
+            binding.bottomNavigation.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.home->{
+                        Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show()
+                        replaceFragment(JobsForYouFragment())
+                    }
 
-                R.id.logout ->{
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Alert!")
-                    builder.setMessage("Are you sure you want to Logout?")
-                    builder.setIcon(android.R.drawable.ic_dialog_alert)
-                    builder.setPositiveButton("Yes"){dialogInterface, which ->
-                        logout()
-                        Toast.makeText(applicationContext,"You have successfully logged out!",Toast.LENGTH_LONG).show()
+                    R.id.appliedJob -> {
+                        Toast.makeText(this,"Applied",Toast.LENGTH_SHORT).show()
+                        replaceFragment(JobsAppliedByYouFragment())
                     }
-                    builder.setNegativeButton("No"){dialogInterface, which ->
+
+                    R.id.logout ->{
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Alert!")
+                        builder.setMessage("Are you sure you want to Logout?")
+                        builder.setIcon(android.R.drawable.ic_dialog_alert)
+                        builder.setPositiveButton("Yes"){dialogInterface, which ->
+                            logout()
+                            Toast.makeText(applicationContext,"You have successfully logged out!",Toast.LENGTH_LONG).show()
+                        }
+                        builder.setNegativeButton("No"){dialogInterface, which ->
+                        }
+                        val alertDialog: AlertDialog = builder.create()
+                        alertDialog.setCancelable(false)
+                        alertDialog.show()
                     }
-                    val alertDialog: AlertDialog = builder.create()
-                    alertDialog.setCancelable(false)
-                    alertDialog.show()
                 }
+                return@setOnItemSelectedListener true
             }
-            return@setOnItemSelectedListener true
+        }else{
+            binding.bottomNavigation.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.home->{
+                        Toast.makeText(this,"Home",Toast.LENGTH_SHORT).show()
+                        replaceFragment(JobsForYouFragment())
+                    }
+
+                    R.id.logout ->{
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Alert!")
+                        builder.setMessage("Are you sure you want to Logout?")
+                        builder.setIcon(android.R.drawable.ic_dialog_alert)
+                        builder.setPositiveButton("Yes"){dialogInterface, which ->
+                            logout()
+                            Toast.makeText(applicationContext,"You have successfully logged out!",Toast.LENGTH_LONG).show()
+                        }
+                        builder.setNegativeButton("No"){dialogInterface, which ->
+                        }
+                        val alertDialog: AlertDialog = builder.create()
+                        alertDialog.setCancelable(false)
+                        alertDialog.show()
+                    }
+                }
+                return@setOnItemSelectedListener true
+            }
         }
+
 
     }
 
