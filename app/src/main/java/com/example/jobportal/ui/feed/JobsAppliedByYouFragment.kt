@@ -31,6 +31,14 @@ class JobsAppliedByYouFragment : Fragment() {
         var data = ArrayList<jobs>()
 
         data.add(jobs("Dev","lsdjflaskfj asdfjlasjdflj","Gurugram"))
+        data.add(jobs("Kum","lsdjflaskfj asdfjlasjdflj","Delhi"))
+        data.add(jobs("Sun","lsdjflaskfj asdfjlasjdflj","Dhanbad"))
+        data.add(jobs("Green","lsdjflaskfj asdfjlasjdflj","Roorkee"))
+        data.add(jobs("Blue","lsdjflaskfj asdfjlasjdflj","Sharanput"))
+        data.add(jobs("Red","lsdjflaskfj asdfjlasjdflj","Dehradun"))
+        data.add(jobs("White","lsdjflaskfj asdfjlasjdflj","New Delhi"))
+
+
 
         val adapter = AppliedJobsAdapter(data)
 

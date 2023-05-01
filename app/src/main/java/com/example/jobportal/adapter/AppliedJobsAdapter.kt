@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jobportal.R
 import com.example.jobportal.models.jobs
 
-class AppliedJobsAdapter(private val mlist:List<jobs>):RecyclerView.Adapter<AppliedJobsAdapter.ViewHolder>()  {
+class AppliedJobsAdapter(private val mlist: List<jobs>) :
+    RecyclerView.Adapter<AppliedJobsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.applicationwithoutbtn, parent, false)
-    return ViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -23,7 +24,6 @@ class AppliedJobsAdapter(private val mlist:List<jobs>):RecyclerView.Adapter<Appl
         holder.designation.text = jobModel.designation
         holder.description.text = jobModel.description
         holder.location.text = jobModel.location
-
     }
 
     override fun getItemCount(): Int {

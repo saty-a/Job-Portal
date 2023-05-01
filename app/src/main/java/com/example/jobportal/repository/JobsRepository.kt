@@ -33,13 +33,4 @@ class JobsRepository @Inject constructor(private val jobApi: JobsAPI) {
             _userResponseLiveData.postValue(NetworkResult.Error("Something Went Wrong"))
         }
     }
-
-//    private fun handleResponse(response: Response<ApplyJob>, message: String) {
-//        if (response.isSuccessful && response.body() != null) {
-//            _userResponseLiveData.postValue(NetworkResult.Success(Pair(true, message)))
-//        } else {
-//            _userResponseLiveData.postValue(NetworkResult.Success(Pair(false, "Something went wrong")))
-//        }
-//    }
-
 }
